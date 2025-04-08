@@ -1,0 +1,5 @@
+// update database
+npx prisma migrate dev --name update-content-type
+
+// reset database
+npx prisma migrate reset
