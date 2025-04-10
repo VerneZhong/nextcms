@@ -1,6 +1,6 @@
-// pages/posts/[id].tsx
-import { GetServerSideProps } from 'next'
-import { PrismaClient } from '@prisma/client'
+// pages/posts/page.tsx
+import {GetServerSideProps} from 'next'
+import {PrismaClient} from '@prisma/client'
 import React from 'react'
 
 const prisma = new PrismaClient()
@@ -8,7 +8,7 @@ const prisma = new PrismaClient()
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const id = Number(context.params?.id)
     const post = await prisma.post.findUnique({
-        where: { id },
+        where: {id},
     })
 
     return {
@@ -18,11 +18,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
 }
 
-export default function PostDetail({ post }: { post: any }) {
+export default function PostDetail({post}: { post: any }) {
     return (
-        <div style={{ padding: '2rem' }}>
+        <div style={{padding: '2rem'}}>
             <h1>{post.title}</h1>
-            <p style={{ whiteSpace: 'pre-line' }}>{post.content}</p>
+            <p style={{whiteSpace: 'pre-line'}}>{post.content}</p>
         </div>
     )
 }
