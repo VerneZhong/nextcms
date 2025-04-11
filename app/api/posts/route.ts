@@ -14,3 +14,10 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(post)
 }
+
+export async function GET() {
+    const posts = await prisma.post.findMany({
+        orderBy: { createdAt: 'desc' },
+    })
+    return NextResponse.json(posts)
+}
