@@ -43,7 +43,11 @@ export default function PostsPage() {
                             className="bg-white shadow-lg border border-gray-200 rounded-xl p-6 transition hover:shadow-xl"
                         >
                             <h2 className="text-2xl font-bold text-gray-800 mb-2">{post.title}</h2>
-                            <p className="text-gray-700 leading-relaxed mb-4">{post.content}</p>
+                            <p className="text-gray-700 leading-relaxed mb-4">
+                                {post.content.slice(0, 100)}...
+                                <a href={`/posts/${post.id}`}
+                                   className="text-blue-600 hover:underline ml-2">続きを読む</a>
+                            </p>
                             <p className="text-sm text-right text-gray-400">
                                 投稿日: {new Date(post.createdAt).toLocaleString()}
                             </p>
